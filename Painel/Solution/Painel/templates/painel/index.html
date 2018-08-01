@@ -8,12 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/static/css/bootstrap.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/charts.css" />
-
-    <style id="teste">
-
-    </style>
-
 </head>
 
 <body class="bg-dark">
@@ -36,20 +30,36 @@
 
 
     <div class="container-fluid py-3">
-        <div class="chart">
-            <div class="pie" data-start="0" data-value="120"></div>
-            <div class="pie" data-start="120" data-value="120"></div>
-            <div class="pie" data-start="240" data-value="120"></div>
-        </div>        
+        <div class="bg-xdark" style="height: 600px;width:600px; ">
+            <canvas id="pieChart"></canvas>
+        </div>
+        
     </div>
 
 </body>
 
 </html>
 <script src="/static/js/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/chart.js"></script>
 <script>
-        
+    //pie
+var ctxP = document.getElementById("pieChart").getContext('2d');
+var myPieChart = new Chart(ctxP, {
+    type: 'pie',
+    data: {
+        labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+        datasets: [
+            {
+                data: [300, 50, 100, 40, 120],
+                backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+                hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+            }
+        ]
+    },
+    options: {
+        responsive: true
+    }
+});
 </script>
